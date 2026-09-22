@@ -1,0 +1,80 @@
+local extension = Package:new("ychancm_syqc")
+extension.extensionName = "ychancm"
+
+-- 加载技能文件
+extension:loadSkillSkelsByPath("./packages/ychancm/pkg/syqc/skills")
+
+-- ============ OPWOW ============
+local opwow_blg = General:new(extension, "syqc__opwow_blg", "qun", 2)
+opwow_blg:addSkills { "syqc__cuojian", "syqc__yincha" }
+
+-- ============ 达米安 ============
+local damian = General:new(extension, "syqc__damian", "qun", 5)
+damian:addSkills { "syqc__chongzou", "syqc__zhenyin", "syqc__juedou" }
+
+-- ============ 翻译表 ============
+Fk:loadTranslationTable{
+  -- 子包名
+  ["ychancm_syqc"] = "十一奇策",
+  ["syqc"] = "十一奇策"，
+
+  -- OPWOW
+  ["syqc__opwow_blg"] = "OPWOW",
+  ["#syqc__opwow_blg"] = "日蒙大王",
+
+  -- 错键
+  ["syqc__cuojian"] = "错键",
+  [":syqc__cuojian"] = "每种牌名每回合限一次，出牌阶段，你的基本牌/普通锦囊牌只能当作普通锦囊牌/基本牌使用。",
+  ["#syqc__cuojian"] = "错键：将一张基本牌或普通锦囊牌相互转化使用",
+
+  -- 饮茶
+  ["syqc__yincha"] = "饮茶",
+  [":syqc__yincha"] = "锁定技，每回合限一次，当你进入濒死时，进行判定，若结果为黑色，你回复1点体力。",
+
+  -- 达米安
+  ["syqc__damian"] = "达米安",
+  ["#syqc__damian"] = "钢铁之心",
+
+  -- 重奏
+  ["syqc__chongzou"] = "重奏",
+  [":syqc__chongzou"] = "锁定技，当你造成或受到伤害后，你与对方各摸一张牌，然后各将一张手牌" ..
+      "<a href='#syqc__dianran'>点燃</a>。",
+  ["#syqc__chongzou-ignite"] = "重奏：选择一张手牌点燃",
+  ["@@syqc__chongzou_ignite"] = "点燃",
+  -- 重奏台词
+  ["$syqc__chongzou1"] = "Metal heart never taps out!",
+  ["$syqc__chongzou2"] = "Ohhhahaha! Bringing that berserker energy!",
+
+  -- 点燃术语锚点
+  ["#syqc__dianran"] = "点燃：使用时无视距离和次数限制，回合结束时场上所有点燃牌置入弃牌堆。",
+
+  -- 震音
+  ["syqc__zhenyin"] = "震音",
+  [":syqc__zhenyin"] = "<a href='#syqc__miaoju'>妙具技（2）</a>。准备阶段，你可以：" ..
+      "①亮出牌堆顶三张牌，将其中一张转化为【桃】；" ..
+      "②令一名角色装备一张随机防具牌，直到其下个回合开始。",
+  ["syqc__zhenyin_mode1"] = "①亮出牌堆顶三张，选一张视为桃",
+  ["syqc__zhenyin_mode2"] = "②令一名角色装备随机防具牌",
+  -- 震音台词
+  ["$syqc__zhenyin1"] = "Tough as a rock, sharp as steel.",
+  ["$syqc__zhenyin2"] = "Oh, look! I'm amazing.",
+
+  -- 角斗
+  ["syqc__juedou"] = "角斗",
+  [":syqc__juedou"] = "限定技，出牌阶段，若你已受伤，你可以选择一名其他角色，然后将你的所有手牌" ..
+      "<a href='#syqc__dianran'>点燃</a>；" ..
+      "此回合结束时，其获得一个额外回合并将所有手牌<a href='#syqc__dianran'>点燃</a>。",
+  ["#syqc__juedou"] = "角斗：选择一名其他角色并点燃自己的所有手牌",
+  ["#syqc__juedou-choose"] = "角斗：选择一名其他角色",
+  -- 角斗台词
+  ["$syqc__juedou1"] = "Berserker mode engage!",
+  ["$syqc__juedou2"] = "Berserker bro!",
+  ["$syqc__juedou3"] = "（激昂的音乐）",
+
+  -- 妙具技术语锚点
+  ["#syqc__miaoju"] = "妙具技是一种特殊技能类型，发动时需要从多个效果中选择一项，" ..
+      "选择后本局游戏只能触发该效果，无法更改。括号内的数字表示每局游戏可发动的总次数，" ..
+      "无法被“视为为发动过”或“重置此技能”的效果影响。",
+}
+
+return extension

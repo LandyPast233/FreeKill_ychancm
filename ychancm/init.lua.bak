@@ -1,0 +1,11 @@
+local prefix = "packages.ychancm.pkg."
+
+local lihang = require(prefix .. "syqc")
+
+Fk:loadTranslationTable{
+  ["ychancm"] = "一酱成名2026",
+}
+
+return {
+  syqc,
+}
